@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/dilruba-website/static/css/main.4a7927f9.css",
-    "main.js": "/dilruba-website/static/js/main.e9a9ba49.js",
+    "main.css": "/dilruba-website/static/css/main.521710fa.css",
+    "main.js": "/dilruba-website/static/js/main.8636820c.js",
     "static/media/dilruba-pic.jpg": "/dilruba-website/static/media/dilruba-pic.35cce72b58186241d9e4.jpg",
     "index.html": "/dilruba-website/index.html",
-    "main.4a7927f9.css.map": "/dilruba-website/static/css/main.4a7927f9.css.map",
-    "main.e9a9ba49.js.map": "/dilruba-website/static/js/main.e9a9ba49.js.map"
+    "main.521710fa.css.map": "/dilruba-website/static/css/main.521710fa.css.map",
+    "main.8636820c.js.map": "/dilruba-website/static/js/main.8636820c.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a7927f9.css",
-    "static/js/main.e9a9ba49.js"
+    "static/css/main.521710fa.css",
+    "static/js/main.8636820c.js"
   ]
 }

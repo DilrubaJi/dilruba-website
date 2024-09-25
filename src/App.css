@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +8,9 @@
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
+  background-color: #F3F3F3;
+  color: #333;
+  padding-bottom: 80px;
 }
 
 .container {
@@ -20,15 +24,99 @@ img {
   height: auto;
 }
 
-header, footer {
-  background-color: #333;
-  color: white;
-  padding: 10px 0;
+/* Header & Navbar */
+header {
+  background-color: #4A148C;
+  color: #FFF;
+  padding: 20px 0;
   text-align: center;
 }
 
-footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Desktop Navbar Styling */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; /* Ensure no wrapping */
+  gap: 10px;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  color: #FFD700;
+  text-decoration: none;
+  padding: 10px 12px;
+  border: 2px solid transparent;
+  transition: 0.3s ease-in-out;
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+nav ul li a:hover {
+  background-color: #FFD700;
+  color: #4A148C;
+  border-radius: 5px;
+  border: 2px solid #FFD700;
+}
+
+/* Hamburger Icon Styling (Mobile) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #FFD700;
+}
+
+.hamburger:hover {
+  color: #FFF;
+}
+
+/* Mobile Menu Styling */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #4A148C;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu ul {
+  flex-direction: column;
+}
+
+.mobile-menu li {
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Responsive Design: Mobile View */
+@media (max-width: 768px) {
+  nav ul {
+    display: none; /* Hide regular menu in mobile view */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger menu icon */
+  }
+
+  .mobile-menu {
+    display: none; /* Hide mobile menu by default */
+  }
+
+  .mobile-menu.open {
+    display: flex; /* Show mobile menu when open */
+  }
 }
