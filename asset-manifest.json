@@ -1,15 +1,14 @@
 {
   "files": {
-    "main.css": "/dilruba-website/static/css/main.f855e6bc.css",
-    "main.js": "/dilruba-website/static/js/main.8d9d9a85.js",
-    "static/js/453.15c3d705.chunk.js": "/dilruba-website/static/js/453.15c3d705.chunk.js",
+    "main.css": "/dilruba-website/static/css/main.4a7927f9.css",
+    "main.js": "/dilruba-website/static/js/main.e9a9ba49.js",
+    "static/media/dilruba-pic.jpg": "/dilruba-website/static/media/dilruba-pic.35cce72b58186241d9e4.jpg",
     "index.html": "/dilruba-website/index.html",
-    "main.f855e6bc.css.map": "/dilruba-website/static/css/main.f855e6bc.css.map",
-    "main.8d9d9a85.js.map": "/dilruba-website/static/js/main.8d9d9a85.js.map",
-    "453.15c3d705.chunk.js.map": "/dilruba-website/static/js/453.15c3d705.chunk.js.map"
+    "main.4a7927f9.css.map": "/dilruba-website/static/css/main.4a7927f9.css.map",
+    "main.e9a9ba49.js.map": "/dilruba-website/static/js/main.e9a9ba49.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.8d9d9a85.js"
+    "static/css/main.4a7927f9.css",
+    "static/js/main.e9a9ba49.js"
   ]
 }
