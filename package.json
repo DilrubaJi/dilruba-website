@@ -2,7 +2,7 @@
   "name": "dilruba-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dilrubaji.github.io/dilruba-website",
+  "homepage": "https://dildeep.store",
   "dependencies": {
     "@sentry/react": "^8.32.0",
     "@testing-library/jest-dom": "^5.17.0",
