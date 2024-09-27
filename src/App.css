@@ -120,3 +120,7 @@ nav ul li a:hover {
     display: flex; /* Show mobile menu when open */
   }
 }
+
+.low-octave::after {
+  content: '̣'; /* Dot below */
+}

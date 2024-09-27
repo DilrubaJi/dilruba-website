@@ -1,8 +1,12 @@
 import React from "react";
-import ComingSoon from "../components/ComingSoon";
+import MusicSelector from "../components/MusicSelector";
 
-function Tuning() {
-    return <ComingSoon />;
-}
+const SargamNotation = () => {
+    return (
+        <div>
+            <MusicSelector />
+        </div>
+    );
+};
 
-export default Tuning;
+export default SargamNotation;
