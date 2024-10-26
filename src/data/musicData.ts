@@ -100,7 +100,7 @@ export const musicData: MusicPiece[] = [
     {
         id: 1,
         raag: 'Bhairao',
-        difficulty: 'easy',
+        difficulty: 'hard',
         taal: 'Teentaal',
         numberOfBeats: 16,
         shabadTitle: 'Sargam in Raag Yaman',
