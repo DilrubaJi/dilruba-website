@@ -7,6 +7,8 @@ interface MusicDetailsProps {
     piece: MusicPiece;
 }
 
+// build notation selector in future
+
 const MusicDetails: React.FC<MusicDetailsProps> = ({ piece }) => {
     const renderNote1 = (note: MusicNote) => {
         const { note: noteValue, octave, type } = note;

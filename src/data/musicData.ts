@@ -58,21 +58,71 @@ function mapMusicData(input: string[][]): MusicNote[][] {
 
 // Example input
 const input: string[][] = [
+    ['      RAHAO     '],
     ['        S-dPdMPGM'],
-    ['rrGMGRSSd_d_N_SrrSS']
+    ['rrGMGRSS        '],
+    ['        d_d_N_SrrSS'],
+    ['GMPMGrSS        '],
+    ['                '],
+    ['      PADHA1    '],
+    ['        dMPPddNN'],
+    ['S-S-S-S-r-r-S-S-        '],
+    ['        r-r-r-r-r-r-S-S-'],
+    ['NS-r-S-ddPP        '],
+    ['        MdPMGPMG'],
+    ['rrGMGrSS        '],
+    ['                '],
+    ['  MUSIC PIECE   '],
+    ['        S-S-NdNNS-S-'],
+    ['S-S-NddPP        '],
+    ['        MdPMGPMG'],
+    ['rrGMdddd        '],
 ];
 
-console.log(mapMusicData(input));
+const input2: string[][] = [
+    ['N_SRgRRRSGMGMggRS'],
+    ['PPPDMGMMggRRn_n_SS']
+];
+
+const input3: string[][] = [
+    ['rrrSSN_S'],
+    ['rrrSSSS'],
+    ['GGMddPP'],
+    ['GGMrrSS'],
+    ['ddNS-S-S-S-'],
+    ['r-r-S-NNS-S-'],
+    ['S-S-NddPP'],
+    ['GGMrrSS'],
+];
+
 
 export const musicData: MusicPiece[] = [
     {
         id: 1,
-        raag: 'Yaman',
+        raag: 'Bhairao',
         difficulty: 'easy',
         taal: 'Teentaal',
         numberOfBeats: 16,
         shabadTitle: 'Sargam in Raag Yaman',
         lines: mapMusicData(input)
+    },
+    {
+        id: 2,
+        raag: 'Majh',
+        difficulty: 'medium',
+        taal: 'Teentaal',
+        numberOfBeats: 16,
+        shabadTitle: 'Simran in Majh',
+        lines: mapMusicData(input2)
+    },
+    {
+        id: 3,
+        raag: 'Bhairao',
+        difficulty: 'medium',
+        taal: 'Rupak',
+        numberOfBeats: 7,
+        shabadTitle: 'Simran in Bhairo',
+        lines: mapMusicData(input3)
     },
 ];
 
