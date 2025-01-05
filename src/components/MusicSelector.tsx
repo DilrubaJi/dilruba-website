@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import { musicData, MusicPiece } from '../data/musicData';
 import MusicDetails from './MusicDetails';
+import './MusicSelector.css';
 
 const MusicSelector: React.FC = () => {
-    const [selectedPiece, setSelectedPiece] = useState < MusicPiece | null > (null);
+    const [selectedPiece, setSelectedPiece] = useState<MusicPiece | null>(null);
 
     const handleSelectPiece = (piece: MusicPiece) => {
         setSelectedPiece(piece);
@@ -13,10 +14,13 @@ const MusicSelector: React.FC = () => {
 
     return (
         <div>
-            <h1>Select a Music Piece</h1>
             <ul>
                 {musicData.map((piece) => (
-                    <li key={piece.id} onClick={() => handleSelectPiece(piece)} style={{ cursor: 'pointer' }}>
+                    <li
+                        key={piece.id}
+                        onClick={() => handleSelectPiece(piece)}
+                        className="music-piece"
+                    >
                         {piece.shabadTitle} - {piece.raag} ({piece.difficulty})
                     </li>
                 ))}
