@@ -12,5 +12,10 @@ export default defineConfig({
         target: 'esnext',
         outDir: 'dist',
         sourcemap: true
+    },
+    resolve: {
+        alias: {
+            '@': '/src'
+        }
     }
 })

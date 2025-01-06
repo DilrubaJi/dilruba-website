@@ -12,14 +12,10 @@ import Resources from "./pages/Resources";
 import Glossary from "./pages/Glossary";
 import './App.css';
 import ThemeProvider from './ThemeProvider';
-import analytics from './utils/analytics';
+
 
 function App() {
-    const location = useLocation()
 
-    useEffect(() => {
-        analytics.page()
-    }, [location.pathname])
     return (
         <ThemeProvider>
             <Router>
