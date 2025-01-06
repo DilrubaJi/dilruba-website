@@ -6,6 +6,7 @@ function Tuning() {
     const [isTuning, setIsTuning] = useState(false);
     const [algorithm, setAlgorithm] = useState('AMDF'); // State to switch between algorithms
     const [options, setOptions] = useState({ sampleRate: 44100, threshold: 0.1 }); // Default options
+    const [referencePitch, setReferencePitch] = useState(440); // State for reference pitch
     const audioContextRef = useRef(null);
     const animationFrameIdRef = useRef(null);
     const mediaStreamRef = useRef(null);
@@ -29,7 +30,7 @@ function Tuning() {
                 let pitch = pitchDetector(dataArray);
                 if (pitch) {
                     pitch = applyCorrectionFactor(pitch); // Apply correction factor
-                    const note = pitchToNoteName(pitch);
+                    const note = pitchToNoteName(pitch, referencePitch);
                     setNote({ name: note, freq: pitch });
                 }
                 animationFrameIdRef.current = requestAnimationFrame(detectPitch);
@@ -69,9 +70,9 @@ function Tuning() {
         return pitch * correctionFactor;
     };
 
-    const pitchToNoteName = (pitch) => {
+    const pitchToNoteName = (pitch, referencePitch) => {
         const noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-        const noteNumber = Math.round(12 * (Math.log(pitch / 440) / Math.log(2))) + 69;
+        const noteNumber = Math.round(12 * (Math.log(pitch / referencePitch) / Math.log(2))) + 69;
         const octave = Math.floor(noteNumber / 12) - 1;
         const note = noteStrings[noteNumber % 12];
         return `${note}${octave}`;
@@ -83,6 +84,10 @@ function Tuning() {
             ...prevOptions,
             [name]: parseFloat(value)
         }));
+    };
+
+    const handleReferencePitchChange = (e) => {
+        setReferencePitch(parseFloat(e.target.value));
     };
 
     const renderOptions = () => {
@@ -147,7 +152,7 @@ function Tuning() {
                     {note ? (
                         <div>
                             <h3>Detected Note: {note.name}</h3>
-                            <p>Frequency: {note.freq} Hz</p>
+                            <p>Frequency: {note.freq.toFixed(2)} Hz</p>
                         </div>
                     ) : (
                         <p>Listening...</p>
@@ -165,6 +170,15 @@ function Tuning() {
             </div>
             <div>
                 {renderOptions()}
+            </div>
+            <div>
+                <label>Reference Pitch (A4): </label>
+                <input
+                    type="number"
+                    value={referencePitch}
+                    onChange={handleReferencePitchChange}
+                    step="0.01"
+                />
             </div>
         </div>
     );
