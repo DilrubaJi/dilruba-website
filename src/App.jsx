@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -12,8 +12,14 @@ import Resources from "./pages/Resources";
 import Glossary from "./pages/Glossary";
 import './App.css';
 import ThemeProvider from './ThemeProvider';
+import analytics from './utils/analytics';
 
 function App() {
+    const location = useLocation()
+
+    useEffect(() => {
+        analytics.page()
+    }, [location.pathname])
     return (
         <ThemeProvider>
             <Router>

@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://dildeep.store",
   "dependencies": {
+    "@analytics/google-analytics": "^1.1.0",
     "@sentry/react": "^8.32.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
