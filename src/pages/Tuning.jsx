@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import * as Pitchfinder from "pitchfinder";
+import PitchIndicator from "../components/PitchIndicator";
 
 function Tuning() {
     const [note, setNote] = useState(null);
@@ -31,7 +32,8 @@ function Tuning() {
                 if (pitch) {
                     pitch = applyCorrectionFactor(pitch); // Apply correction factor
                     const note = pitchToNoteName(pitch, referencePitch);
-                    setNote({ name: note, freq: pitch });
+                    const noteFrequency = noteToFrequency(note, referencePitch);
+                    setNote({ name: note, freq: pitch, noteFreq: noteFrequency });
                 }
                 animationFrameIdRef.current = requestAnimationFrame(detectPitch);
             };
@@ -76,6 +78,15 @@ function Tuning() {
         const octave = Math.floor(noteNumber / 12) - 1;
         const note = noteStrings[noteNumber % 12];
         return `${note}${octave}`;
+    };
+
+    const noteToFrequency = (note, referencePitch) => {
+        const noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+        const noteName = note.slice(0, -1);
+        const octave = parseInt(note.slice(-1), 10);
+        const noteIndex = noteStrings.indexOf(noteName);
+        const noteNumber = noteIndex + (octave + 1) * 12;
+        return referencePitch * Math.pow(2, (noteNumber - 69) / 12);
     };
 
     const handleOptionChange = (e) => {
@@ -142,7 +153,7 @@ function Tuning() {
 
     return (
         <div className="container">
-            <h2>Tuner</h2>
+            <h2>Tuner (beta v1.3)</h2>
             <p>Click the button below to start or stop tuning:</p>
             <button onClick={isTuning ? stopTuning : startTuning}>
                 {isTuning ? 'Stop Tuning' : 'Start Tuning'}
@@ -153,6 +164,7 @@ function Tuning() {
                         <div>
                             <h3>Detected Note: {note.name}</h3>
                             <p>Frequency: {note.freq.toFixed(2)} Hz</p>
+                            <PitchIndicator pitch={note.freq} note={note.name} referencePitch={note.noteFreq} />
                         </div>
                     ) : (
                         <p>Listening...</p>
