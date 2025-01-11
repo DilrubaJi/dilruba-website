@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,6 +8,7 @@ import Tuning from "./pages/Tuning";
 import Practice from "./pages/Practice";
 import SargamNotation from "./pages/SargamNotation";
 import RaagKirtan from "./pages/RaagKirtan";
+import RaagAsa from "./pages/RaagAsa";
 import Resources from "./pages/Resources";
 import Glossary from "./pages/Glossary";
 import './App.css';
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/practice" element={<Practice />} />
                     <Route path="/sargam-notation" element={<SargamNotation />} />
                     <Route path="/raag-kirtan" element={<RaagKirtan />} />
+                    <Route path="/raag-asa" element={<RaagAsa />} /> {/* Add RaagAsa route */}
                     <Route path="/resources" element={<Resources />} />
                     <Route path="/glossary" element={<Glossary />} />
                 </Routes>

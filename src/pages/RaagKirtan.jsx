@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function RaagKirtan() {
     return (
@@ -33,6 +34,13 @@ function RaagKirtan() {
                 <p>
                     The Sikh Gurus emphasized the importance of music in spiritual practice, and their compositions in the Guru Granth Sahib are a testament to this belief. Raag Kirtan continues to inspire and uplift the Sikh community, fostering a sense of unity, devotion, and reverence for the teachings of the Gurus.
                 </p>
+            </section>
+
+            <section>
+                <h3>Experimental projection animation for Raag</h3>
+                <p>This a demo example of a fullscreen projection that can be use in divaans while playing simran in raag.
+                    The image reflects the emotional signature of the raag with some explanation overlayed</p>
+                <Link to="/raag-asa">Watch Raag Asa Video</Link>
             </section>
         </div>
     );
