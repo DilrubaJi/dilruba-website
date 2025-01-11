@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "homepage": "https://dildeep.store/dilruba-website",
+  "homepage": "https://dildeep.store",
   "dependencies": {
     "@analytics/google-analytics": "^1.1.0",
     "@sentry/react": "^8.32.0",
