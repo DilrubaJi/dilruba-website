@@ -124,3 +124,23 @@ nav ul li a:hover {
 .low-octave::after {
   content: '̣'; /* Dot below */
 }
+
+.button-link {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #0056b3;
+}

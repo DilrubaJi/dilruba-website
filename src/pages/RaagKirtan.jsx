@@ -40,7 +40,7 @@ function RaagKirtan() {
                 <h3>Experimental projection animation for Raag</h3>
                 <p>This a demo example of a fullscreen projection that can be use in divaans while playing simran in raag.
                     The image reflects the emotional signature of the raag with some explanation overlayed</p>
-                <Link to="/raag-asa">Watch Raag Asa Video</Link>
+                <Link to="/raag-asa" className="button-link">Watch Raag Asa video for projectors</Link>
             </section>
         </div>
     );
