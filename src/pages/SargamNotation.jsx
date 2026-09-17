@@ -1,14 +1,11 @@
 import React from "react";
-import MusicSelector from "../components/MusicSelector";
+import SargamStudio from "../components/SargamStudio";
 
 const SargamNotation = () => {
     return (
-        <div className="container">
-            <h2>Select a Music Piece</h2>
-        <div>
-            <MusicSelector />
-        </div>
-        </div>
+        <main className="min-h-screen bg-slate-900 py-6">
+            <SargamStudio />
+        </main>
     );
 };
 
