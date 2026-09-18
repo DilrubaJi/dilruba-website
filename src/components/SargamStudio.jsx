@@ -18,7 +18,8 @@ const SWARA_SEMITONES = {
 const INITIAL_LINES = [
     {
         id: 'line_1',
-        label: 'Sthayi (Line 1)',
+        lineType: 'Rahao',
+        label: 'Rahao (Line 1)',
         notationText: "S R G m P - D N S' - N D P m G R",
         gurmukhiText: 'ਤੂ - ਠਾ ਕੁਰੁ ਤੁਮ - ਪਹਿ ਅਰ ਦਾ - - ਸਿ ਜੀ - ਉ -',
         englishText: 'Tu - Tha kur Tum - Peh Ar da - - si Ji - u -'
@@ -51,15 +52,8 @@ export default function SargamStudio() {
         }).toDestination();
 
         synthRef.current = new Tone.PolySynth(Tone.Synth, {
-            oscillator: {
-                type: "triangle"
-            },
-            envelope: {
-                attack: 0.8,   // Slow fade in
-                decay: 0.3,
-                sustain: 0.8,
-                release: 1.2   // Long fade out
-            },
+            oscillator: { type: 'sawtooth' },
+            envelope: { attack: 0.12, decay: 0.3, sustain: 0.8, release: 0.9 },
             portamento: 0.08
         }).connect(filterRef.current);
 
@@ -140,17 +134,20 @@ export default function SargamStudio() {
         setActiveBeatGlobal({ lineIndex: -1, beatIndex: -1 });
     };
 
-    const handleAddLine = () => {
-        setLines([
-            ...lines,
-            {
-                id: `line_${Date.now()}`,
-                label: `Antara / Line ${lines.length + 1}`,
-                notationText: "P D N S' S' - N D P m G R S -",
-                gurmukhiText: 'ਹਰਿ ਜੀ - ਉ ਆ - ਪੇ ਦਇ ਆ - ਲੁ ਹੋ -',
-                englishText: 'Har ji - u A - pe Da i a - lu Ho -'
-            }
-        ]);
+    // Amendment 2: Insert line directly below specified index
+    const handleAddLineAfter = (index) => {
+        const newLine = {
+            id: `line_${Date.now()}`,
+            lineType: 'Pada',
+            label: `Pada (Line ${lines.length + 1})`,
+            notationText: "P D N S' S' - N D P m G R S -",
+            gurmukhiText: 'ਹਰਿ ਜੀ - ਉ ਆ - ਪੇ ਦਇ ਆ - ਲੁ ਹੋ -',
+            englishText: 'Har ji - u A - pe Da i a - lu Ho -'
+        };
+
+        const updatedLines = [...lines];
+        updatedLines.splice(index + 1, 0, newLine);
+        setLines(updatedLines);
     };
 
     const handleRemoveLine = (id) => {
@@ -295,6 +292,7 @@ export default function SargamStudio() {
                         </div>
                     </div>
 
+                    {/* Amendment 3: Removed "Add Line / Avartan" from action bar */}
                     <div className={styles.actionBar}>
                         <div className={styles.btnGroup}>
                             <button
@@ -302,10 +300,6 @@ export default function SargamStudio() {
                                 className={`${styles.btnPlay} ${isPlaying ? styles.btnStop : ''}`}
                             >
                                 {isPlaying ? '⏹ Stop' : '▶ Play Composition'}
-                            </button>
-
-                            <button onClick={handleAddLine} className={styles.btnSecondary}>
-                                + Add Line / Avartan
                             </button>
                         </div>
 
@@ -323,18 +317,41 @@ export default function SargamStudio() {
                             return (
                                 <div key={line.id} className={styles.lineCard}>
                                     <div className={styles.lineHeader}>
-                                        <input
-                                            type="text"
-                                            value={line.label}
-                                            onChange={(e) => handleUpdateLine(line.id, 'label', e.target.value)}
-                                            className={styles.lineLabelInput}
-                                        />
+                                        <div className={styles.lineHeaderLeft}>
+                                            {/* Amendment 4: Line type selector for Rahao, Pada, and Instrumental */}
+                                            <select
+                                                value={line.lineType || 'Pada'}
+                                                onChange={(e) => handleUpdateLine(line.id, 'lineType', e.target.value)}
+                                                className={styles.lineTypeSelect}
+                                            >
+                                                <option value="Rahao">Rahao (ਰਹਾਉ)</option>
+                                                <option value="Pada">Pada (ਪਦਾ)</option>
+                                                <option value="Instrumental">Instrumental (ਗਤ)</option>
+                                            </select>
 
-                                        {lines.length > 1 && (
-                                            <button onClick={() => handleRemoveLine(line.id)} className={styles.btnDelete}>
-                                                Delete Line
+                                            <input
+                                                type="text"
+                                                value={line.label}
+                                                onChange={(e) => handleUpdateLine(line.id, 'label', e.target.value)}
+                                                className={styles.lineLabelInput}
+                                            />
+                                        </div>
+
+                                        {/* Amendment 2: Added "Add line / Avartan" to the right of "Delete Line" */}
+                                        <div className={styles.lineHeaderRight}>
+                                            {lines.length > 1 && (
+                                                <button onClick={() => handleRemoveLine(line.id)} className={styles.btnDelete}>
+                                                    Delete Line
+                                                </button>
+                                            )}
+
+                                            <button
+                                                onClick={() => handleAddLineAfter(lineIdx)}
+                                                className={styles.btnAddLineInline}
+                                            >
+                                                + Add Line / Avartan
                                             </button>
-                                        )}
+                                        </div>
                                     </div>
 
                                     <div className={styles.inputsGrid}>
