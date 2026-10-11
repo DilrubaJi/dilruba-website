@@ -15,6 +15,14 @@
     font-family: 'Noto Sans Gurmukhi', sans-serif;
 }
 
+.raagAccordionContainer {
+    margin-top: 1rem;
+    border: 1px solid #334155;
+    border-radius: 0.75rem;
+    background-color: rgba(30, 41, 59, 0.4);
+    overflow: hidden;
+}
+
 /* Header */
 .header {
     display: flex;
