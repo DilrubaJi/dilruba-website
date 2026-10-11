@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as Tone from 'tone';
 import styles from './SargamStudio.module.css';
-import { SGGS_RAAGS } from './raagData';
-import { RaagDropdown } from './RaagDropdown';
-import { RaagDetailsAccordion } from './RaagDetailsAccordion';
 
 const TAALS = {
     Teental: { name: 'Teental', beats: 16, vibhags: [4, 4, 4, 4], markers: ['X', '2', '0', '3'] },
@@ -33,7 +30,6 @@ export default function SargamStudio() {
     const synthRef = useRef(null);
     const filterRef = useRef(null);
 
-    const [selectedRaag, setSelectedRaag] = useState(SGGS_RAAGS[0]);
     const [title, setTitle] = useState('Tu Thakur Tum Peh Ardas');
     const [raag, setRaag] = useState('Asa');
     const [currentTaal, setCurrentTaal] = useState('Teental');
@@ -243,10 +239,15 @@ export default function SargamStudio() {
                             />
                         </div>
 
-                        <RaagDropdown
-                            selectedRaagId={selectedRaag.id}
-                            onSelectRaag={(raag) => setSelectedRaag(raag)}
-                        />
+                        <div>
+                            <label className={styles.fieldLabel}>Raag</label>
+                            <input
+                                type="text"
+                                value={raag}
+                                onChange={(e) => setRaag(e.target.value)}
+                                className={styles.inputField}
+                            />
+                        </div>
 
                         <div>
                             <label className={styles.fieldLabel}>Taal Cycle</label>
@@ -306,8 +307,6 @@ export default function SargamStudio() {
                             💾 Save Composition
                         </button>
                     </div>
-
-                    <RaagDetailsAccordion raag={selectedRaag} />
 
                     <div>
                         {lines.map((line, lineIdx) => {
